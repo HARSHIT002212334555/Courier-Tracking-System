@@ -1,26 +1,58 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
 
-    <h2>📦 Track Your Parcel</h2>
+    <div class="container">
 
-    <input type="text" id="trackId" placeholder="Enter Tracking ID">
-    <button onclick="trackParcel()">Track</button>
+        <!-- LEFT SIDE -->
+        <div class="left">
+            <img src="https://cdn-icons-png.flaticon.com/512/295/295128.png" alt="">
+            <h2>Secure Access</h2>
+            <p>Courier Tracking System Admin Panel</p>
+        </div>
 
-    <div id="result"></div>
+        <!-- RIGHT SIDE -->
+        <div class="right">
+            <h2>Login as Admin</h2>
 
-    <iframe id="map" width="100%" height="300"></iframe>
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
 
+            <button onclick="login()">Login</button>
 
-    <script src="script.js"></script>
+            <p class="forgot">Forgot password?</p>
+        </div>
+
+    </div>
+    <script>
+        function login() {
+            let user = document.getElementById("username").value.trim();
+            let pass = document.getElementById("password").value.trim();
+
+            console.log("USER:", user);
+            console.log("PASS:", pass);
+
+            if (!user || !pass) {
+                alert("Please enter username & password ⚠️");
+                return;
+            }
+
+            let expectedPassword = user + "@123";
+
+            if (pass === expectedPassword) {
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid Login ❌");
+            }
+        }
+    </script>
 
 </body>
 
